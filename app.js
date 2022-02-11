@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userSqaures = [];
   const computerSqaures = [];
   const width = 10;
+  let isHorizontal = true;
 
   //create boards 
   function createBoards(grid, sqaures) {
@@ -89,4 +90,25 @@ document.addEventListener("DOMContentLoaded", () => {
   generate(shipArray[2]);
   generate(shipArray[3]);
   generate(shipArray[4]);
+
+  //rotate ships
+  function rotate() {
+    if(isHorizontal) {
+      destroyer.classList.toggle('destroyer-container-vertical');
+      submarine.classList.toggle('submarine-container-vertical');
+      cruiser.classList.toggle('cruiser-container-vertical');
+      battleship.classList.toggle('battleship-container-vertical');
+      carrier.classList.toggle('carrier-container-vertical');
+      isHorizontal = false;
+    }
+    if(!isHorizontal) {
+      destroyer.classList.toggle('destroyer-container');
+      submarine.classList.toggle('submarine-container');
+      cruiser.classList.toggle('cruiser-container');
+      battleship.classList.toggle('battleship-container');
+      carrier.classList.toggle('carrier-container');
+      isHorizontal = true;
+    }
+  }
+  rotateButton.addEventListener('click', rotate)
 });
